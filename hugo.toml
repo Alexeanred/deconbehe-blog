@@ -1,4 +1,4 @@
 baseURL = 'https://alexeanred.github.io/deconbehe-blog/'
 languageCode = 'en-us'
-title = 'My New Hugo Site'
+title = 'Nguyễn Duy Tiến blogs'
 theme = 'paper'
