@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>My New Hugo Site</title>
-    <link>http://localhost:59150/</link>
+    <link>http://localhost:1313/deconbehe-blog/</link>
     <description>Recent content on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 31 May 2024 16:48:18 +0700</lastBuildDate>
-    <atom:link href="http://localhost:59150/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/deconbehe-blog/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hello</title>
-      <link>http://localhost:59150/posts/hello/</link>
+      <link>http://localhost:1313/deconbehe-blog/posts/hello/</link>
       <pubDate>Fri, 31 May 2024 16:48:18 +0700</pubDate>
-      <guid>http://localhost:59150/posts/hello/</guid>
+      <guid>http://localhost:1313/deconbehe-blog/posts/hello/</guid>
       <description>Hello my friend </description>
     </item>
   </channel>
