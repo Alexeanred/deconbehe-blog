@@ -1,0 +1,346 @@
+<!doctype html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready lg:text-base"
+  style="--bg: #faf8f1"
+  lang="en-us"
+>
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+
+  
+  <title>Bài 2: Cloud computing: Basic definitions - Nguyễn Duy Tiến blogs</title>
+
+  
+  <meta name="theme-color" />
+
+  
+  
+  
+  
+  <meta name="description" content="Một số khái niệm cơ bản HA (High Availability) HA thường được đo bởi phần trăm thời gian hoạt động. Tính sẵn sàng cao nói đến khả năng tránh sự cố, loại bỏ các SPOF (Single-point-of-failure). Single Point of Failure là một thành phần duy nhất của một hệ thống mà khi bị lỗi sẽ làm toàn bộ hệ thống ngừng hoạt động. Ví dụ: 1 server duy nhất, 1 storage duy nhất, 1 nguồn điện, 1 đường truyền mạng." />
+  <meta name="author" content="Nguyễn Duy Tiến blogs" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="https://alexeanred.github.io/deconbehe-blog/main.min.css" />
+
+  
+  
+  
+  
+  
+  <link rel="preload" as="image" href="https://alexeanred.github.io/deconbehe-blog/theme.png" />
+
+  
+  
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  <script
+    defer
+    src="https://alexeanred.github.io/deconbehe-blog/highlight.min.js"
+    onload="hljs.initHighlightingOnLoad();"
+  ></script>
+  
+
+  
+  
+  
+
+  
+  <link rel="icon" href="https://alexeanred.github.io/deconbehe-blog/favicon.ico" />
+  <link rel="apple-touch-icon" href="https://alexeanred.github.io/deconbehe-blog/apple-touch-icon.png" />
+
+  
+  <meta name="generator" content="Hugo 0.123.7">
+
+  
+  
+  
+  
+  
+  <meta itemprop="name" content="Bài 2: Cloud computing: Basic definitions">
+<meta itemprop="description" content="Một số khái niệm cơ bản HA (High Availability) HA thường được đo bởi phần trăm thời gian hoạt động. Tính sẵn sàng cao nói đến khả năng tránh sự cố, loại bỏ các SPOF (Single-point-of-failure). Single Point of Failure là một thành phần duy nhất của một hệ thống mà khi bị lỗi sẽ làm toàn bộ hệ thống ngừng hoạt động. Ví dụ: 1 server duy nhất, 1 storage duy nhất, 1 nguồn điện, 1 đường truyền mạng."><meta itemprop="datePublished" content="2024-09-22T17:23:41+07:00" />
+<meta itemprop="dateModified" content="2024-09-22T17:23:41+07:00" />
+<meta itemprop="wordCount" content="829">
+<meta itemprop="keywords" content="" />
+  
+  <meta property="og:title" content="Bài 2: Cloud computing: Basic definitions" />
+<meta property="og:description" content="Một số khái niệm cơ bản HA (High Availability) HA thường được đo bởi phần trăm thời gian hoạt động. Tính sẵn sàng cao nói đến khả năng tránh sự cố, loại bỏ các SPOF (Single-point-of-failure). Single Point of Failure là một thành phần duy nhất của một hệ thống mà khi bị lỗi sẽ làm toàn bộ hệ thống ngừng hoạt động. Ví dụ: 1 server duy nhất, 1 storage duy nhất, 1 nguồn điện, 1 đường truyền mạng." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://alexeanred.github.io/deconbehe-blog/posts/blog2-clouddef/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-09-22T17:23:41+07:00" />
+<meta property="article:modified_time" content="2024-09-22T17:23:41+07:00" />
+
+
+  
+  <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Bài 2: Cloud computing: Basic definitions"/>
+<meta name="twitter:description" content="Một số khái niệm cơ bản HA (High Availability) HA thường được đo bởi phần trăm thời gian hoạt động. Tính sẵn sàng cao nói đến khả năng tránh sự cố, loại bỏ các SPOF (Single-point-of-failure). Single Point of Failure là một thành phần duy nhất của một hệ thống mà khi bị lỗi sẽ làm toàn bộ hệ thống ngừng hoạt động. Ví dụ: 1 server duy nhất, 1 storage duy nhất, 1 nguồn điện, 1 đường truyền mạng."/>
+
+  
+  
+  
+  <link rel="canonical" href="https://alexeanred.github.io/deconbehe-blog/posts/blog2-clouddef/" />
+  
+  
+</head>
+
+  <body class="text-black duration-200 ease-out dark:text-white">
+    <header class="mx-auto flex h-[4.5rem] max-w-3xl px-8 lg:justify-center">
+  <div class="relative z-50 mr-auto flex items-center">
+    <a
+      class="-translate-x-[1px] -translate-y-[1px] text-2xl font-semibold"
+      href="https://alexeanred.github.io/deconbehe-blog/"
+      >Nguyễn Duy Tiến blogs</a
+    >
+    <div
+      class="btn-dark text-[0] ml-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.png)_left_center/_auto_theme('spacing.6')_no-repeat] [transition:_background-position_0.4s_steps(5)] dark:[background-position:right]"
+      role="button"
+      aria-label="Dark"
+    ></div>
+  </div>
+
+  <div
+    class="btn-menu relative z-50 -mr-8 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"
+    role="button"
+    aria-label="Menu"
+  ></div>
+
+  
+
+  <script>
+    
+    const htmlClass = document.documentElement.classList;
+    setTimeout(() => {
+      htmlClass.remove('not-ready');
+    }, 10);
+
+    
+    const btnMenu = document.querySelector('.btn-menu');
+    btnMenu.addEventListener('click', () => {
+      htmlClass.toggle('open');
+    });
+
+    
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    const lightBg = '#faf8f1'.replace(/"/g, '');
+    const setDark = (isDark) => {
+      metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
+      htmlClass[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark);
+    };
+
+    
+    const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    if (htmlClass.contains('dark')) {
+      setDark(true);
+    } else {
+      const darkVal = localStorage.getItem('dark');
+      setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+    }
+
+    
+    darkScheme.addEventListener('change', (event) => {
+      setDark(event.matches);
+    });
+
+    
+    const btnDark = document.querySelector('.btn-dark');
+    btnDark.addEventListener('click', () => {
+      setDark(localStorage.getItem('dark') !== 'true');
+    });
+  </script>
+
+  <div
+    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"
+  >
+    
+    
+
+    
+  </div>
+</header>
+
+
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-9rem)] max-w-3xl px-8 pb-16 pt-12 dark:prose-invert"
+    >
+      
+
+<article>
+  <header class="mb-16">
+    <h1 class="!my-0 pb-2.5">Bài 2: Cloud computing: Basic definitions</h1>
+
+    
+    <div class="text-sm antialiased opacity-60">
+      
+      <time>Sep 22, 2024</time>
+      
+      
+      
+      
+    </div>
+    
+  </header>
+
+  <section><h1 id="một-số-khái-niệm-cơ-bản">Một số khái niệm cơ bản</h1>
+<h2 id="ha-high-availability">HA (High Availability)</h2>
+<p><img src="https://www.techtarget.com/rms/onlineimages/cloud_computing-availability_sla.png" alt="Pic2"></p>
+<ul>
+<li>HA thường được đo bởi phần trăm thời gian hoạt động.</li>
+<li>Tính sẵn sàng cao nói đến khả năng tránh sự cố, loại bỏ các SPOF (Single-point-of-failure).</li>
+<li>Single Point of Failure là một thành phần duy nhất của một hệ thống mà khi bị lỗi sẽ làm toàn bộ hệ thống ngừng hoạt động. Ví dụ: 1 server duy nhất, 1 storage duy nhất, 1 nguồn điện, 1 đường truyền mạng.</li>
+<li>1 hệ thống có thể tiếp tục hoạt động khi có 1 thành phần bị lỗi, ko bị downtime, mất dữ liệu và khôi phục liền sau đó.</li>
+<li>1 số yếu tố của 1 hệ thống HA tốt:
+<ul>
+<li>Redundancy: khả năng dự phòng - khả năng có nhiều thành phần giống hệt nhau được sao lưu sẵn sàng trong hệ thống, khi một thành phần chính bị lỗi, một thành phần dự phòng sẽ tiếp quản ngay lập tức mà không làm gián đoạn dịch vụ.</li>
+<li>Monitoring: khả năng giám sát - quá trình theo dõi sức khỏe các thành phần trong hệ thống.</li>
+<li>Failover: khả năng chuyển đổi dự phòng - tự động chuyển đổi từ thành phần gặp sự cố sang thành phần dự phòng trong trường hợp có lỗi.</li>
+<li>Failback: khả năng khôi phục - quá trình chuyển ngược lại từ thành phần dự phòng về thành phần chính sau khi thành phần chính đã được khắc phục lỗi. Failback đảm bảo rằng hệ thống sẽ không phụ thuộc vào thành phần dự phòng lâu dài, và có thể trở lại trạng thái tối ưu khi thành phần chính đã sẵn sàng.</li>
+</ul>
+</li>
+</ul>
+<h3 id="sla-service-level-agreement">SLA (Service Level Agreement)</h3>
+<ul>
+<li>SLA, hay Service Level Agreement, là một thỏa thuận dịch vụ giữa nhà cung cấp dịch vụ (như dịch vụ cloud, phần mềm, viễn thông) và khách hàng. Thỏa thuận này xác định các cam kết về mức độ dịch vụ mà nhà cung cấp phải đảm bảo, như thời gian hoạt động (uptime), độ trễ (latency), tốc độ phản hồi, và các điều khoản hỗ trợ kỹ thuật. SLA cũng thường quy định các biện pháp xử phạt (penalty) hoặc bồi thường nếu nhà cung cấp không đạt được mức cam kết.</li>
+</ul>
+<h2 id="agility-khả-năng-linh-hoạt">Agility (Khả năng linh hoạt)</h2>
+<ul>
+<li>Agility đề cập đến khả năng của một hệ thống hoặc tổ chức có thể nhanh chóng thích ứng và thay đổi theo nhu cầu kinh doanh mới, điều chỉnh tài nguyên và dịch vụ một cách linh hoạt mà không cần thời gian hoặc chi phí lớn.</li>
+</ul>
+<h2 id="scalability-khả-năng-mở-rộng">Scalability (khả năng mở rộng)</h2>
+<ul>
+<li>Scalability là khả năng của hệ thống có thể mở rộng để đáp ứng khối lượng công việc tăng cao bằng cách tăng tài nguyên (ví dụ: CPU, RAM, lưu trữ). Scalability có thể theo chiều dọc (vertical scaling) (tăng cường tài nguyên trên một instance) hoặc theo chiều ngang (horizontal scaling) (thêm nhiều instance vào hệ thống).</li>
+</ul>
+<h2 id="elasticity">Elasticity</h2>
+<ul>
+<li>Elasticity là khả năng của hệ thống tự động mở rộng và thu hẹp tài nguyên dựa trên nhu cầu thực tế của khối lượng công việc. Không chỉ mở rộng khi cần, mà còn có khả năng giải phóng tài nguyên khi nhu cầu giảm xuống để tối ưu hóa chi phí.</li>
+</ul>
+<h2 id="fault-tolerance-khả-năng-chịu-lỗi">Fault Tolerance (Khả năng chịu lỗi)</h2>
+<ul>
+<li>Fault tolerance là khả năng của hệ thống tiếp tục hoạt động chính xác ngay cả khi một hoặc nhiều thành phần trong hệ thống gặp sự cố. Các thành phần dự phòng được sử dụng để tránh gián đoạn dịch vụ.</li>
+</ul>
+<h2 id="resilience-khả-năng-phục-hồi">Resilience (Khả năng phục hồi)</h2>
+<ul>
+<li>Resilience là khả năng của hệ thống có thể phục hồi sau sự cố và tiếp tục hoạt động mà không bị mất dữ liệu hoặc ảnh hưởng nghiêm trọng đến hiệu suất.</li>
+</ul>
+<h2 id="disaster-recovery">Disaster recovery</h2>
+<ul>
+<li>Disaster recovery là quá trình lập kế hoạch và triển khai các biện pháp để khôi phục lại hệ thống sau các thảm họa lớn (như hỏng hạ tầng, thiên tai, hoặc mất điện) nhằm đảm bảo dịch vụ không bị gián đoạn hoặc giảm thiểu thời gian gián đoạn.</li>
+</ul>
+<h2 id="sustainability">Sustainability</h2>
+<ul>
+<li>Sustainability (bền vững) trong điện toán đám mây là việc thiết kế và vận hành các khối lượng công việc (workload) trên đám mây sao cho giảm thiểu các tác động tiêu cực đến môi trường, đặc biệt là tiêu thụ năng lượng và phát thải carbon. Điều này bao gồm việc hiểu và giảm thiểu tài nguyên mà các dịch vụ đám mây sử dụng, chẳng hạn như điện và phần cứng, trong suốt vòng đời của một khối lượng công việc. Thực hành này phù hợp với phát triển bền vững, đảm bảo rằng các hoạt động hiện tại không làm ảnh hưởng đến khả năng của các thế hệ tương lai trong việc đáp ứng nhu cầu của họ. Trong điện toán đám mây, trách nhiệm về bền vững được chia sẻ giữa nhà cung cấp đám mây và khách hàng sử dụng dịch vụ.</li>
+</ul>
+</section>
+
+  
+  
+
+  
+  
+  
+  
+  <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
+    
+    <a
+      class="flex w-1/2 items-center rounded-l-md p-6 pr-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
+      href="https://alexeanred.github.io/deconbehe-blog/posts/blog3-cloudbenefit/"
+      ><span class="mr-1.5">←</span><span>Bài 3: Cloud computing: CapEx Vs OpEx</span></a
+    >
+    
+    
+    <a
+      class="ml-auto flex w-1/2 items-center justify-end rounded-r-md p-6 pl-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
+      href="https://alexeanred.github.io/deconbehe-blog/posts/blog1-cloudmodel/"
+      ><span>Bài 1: Cloud Computing: 3 Types of Cloud</span><span class="ml-1.5">→</span></a
+    >
+    
+  </nav>
+  
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[4.5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+>
+  <div class="mr-auto">
+    &copy; 2024
+    <a class="link" href="https://alexeanred.github.io/deconbehe-blog/">Nguyễn Duy Tiến blogs</a>
+  </div>
+  <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank"
+    >Powered by Hugo️️</a
+  >️
+  <a
+    class="link"
+    href="https://github.com/nanxiaobei/hugo-paper"
+    rel="noopener"
+    target="_blank"
+    >✎ Paper</a
+  >
+</footer>
+
+  </body>
+</html>

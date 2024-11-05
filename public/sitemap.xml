@@ -2,17 +2,26 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/deconbehe-blog/posts/hello/</loc>
+    <loc>https://alexeanred.github.io/deconbehe-blog/posts/blog4-cp2/</loc>
+    <lastmod>2024-09-29T16:29:11+07:00</lastmod>
+  </url><url>
+    <loc>https://alexeanred.github.io/deconbehe-blog/</loc>
+    <lastmod>2024-09-29T16:29:11+07:00</lastmod>
+  </url><url>
+    <loc>https://alexeanred.github.io/deconbehe-blog/posts/</loc>
+    <lastmod>2024-09-29T16:29:11+07:00</lastmod>
+  </url><url>
+    <loc>https://alexeanred.github.io/deconbehe-blog/posts/blog3-cloudbenefit/</loc>
+    <lastmod>2024-09-22T21:00:00+07:00</lastmod>
+  </url><url>
+    <loc>https://alexeanred.github.io/deconbehe-blog/posts/blog2-clouddef/</loc>
+    <lastmod>2024-09-22T17:23:41+07:00</lastmod>
+  </url><url>
+    <loc>https://alexeanred.github.io/deconbehe-blog/posts/blog1-cloudmodel/</loc>
     <lastmod>2024-05-31T16:48:18+07:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/deconbehe-blog/</loc>
-    <lastmod>2024-05-31T16:48:18+07:00</lastmod>
+    <loc>https://alexeanred.github.io/deconbehe-blog/categories/</loc>
   </url><url>
-    <loc>http://localhost:1313/deconbehe-blog/posts/</loc>
-    <lastmod>2024-05-31T16:48:18+07:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/deconbehe-blog/categories/</loc>
-  </url><url>
-    <loc>http://localhost:1313/deconbehe-blog/tags/</loc>
+    <loc>https://alexeanred.github.io/deconbehe-blog/tags/</loc>
   </url>
 </urlset>

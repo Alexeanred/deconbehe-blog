@@ -1,0 +1,424 @@
+<!doctype html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<html
+  class="not-ready lg:text-base"
+  style="--bg: #faf8f1"
+  lang="en-us"
+>
+  <head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+
+  
+  <title>Bài 4: AWS Card Clash Cloud Practitioner 2: Regions and Zones - Nguyễn Duy Tiến blogs</title>
+
+  
+  <meta name="theme-color" />
+
+  
+  
+  
+  
+  <meta name="description" content="Mục Đích Thông qua bài blog này, ta sẽ tìm hiểu một số khái niệm về networking trong AWS như VPC, subnet, các zones như local zone, wavelengths zone, outposts zone. Đồng thời ta sẽ thực hành tạo custom VPC, subnet, tạo EC2 instance, tạo resources như EC2 instance trong local zone. Khái Niệm VPC (Virtual Private Cloud) VPC là một môi trường mạng ảo cho phép bạn triển khai các tài nguyên của mình trên đám mây AWS một cách bảo mật và có thể kiểm soát hoàn toàn." />
+  <meta name="author" content="Nguyễn Duy Tiến blogs" />
+  
+
+  
+  
+  
+  
+  
+  
+  <link rel="preload stylesheet" as="style" href="https://alexeanred.github.io/deconbehe-blog/main.min.css" />
+
+  
+  
+  
+  
+  
+  <link rel="preload" as="image" href="https://alexeanred.github.io/deconbehe-blog/theme.png" />
+
+  
+  
+  
+  
+  
+
+  
+  
+  
+
+  
+  
+  <script
+    defer
+    src="https://alexeanred.github.io/deconbehe-blog/highlight.min.js"
+    onload="hljs.initHighlightingOnLoad();"
+  ></script>
+  
+
+  
+  
+  
+
+  
+  <link rel="icon" href="https://alexeanred.github.io/deconbehe-blog/favicon.ico" />
+  <link rel="apple-touch-icon" href="https://alexeanred.github.io/deconbehe-blog/apple-touch-icon.png" />
+
+  
+  <meta name="generator" content="Hugo 0.123.7">
+
+  
+  
+  
+  
+  
+  <meta itemprop="name" content="Bài 4: AWS Card Clash Cloud Practitioner 2: Regions and Zones">
+<meta itemprop="description" content="Mục Đích Thông qua bài blog này, ta sẽ tìm hiểu một số khái niệm về networking trong AWS như VPC, subnet, các zones như local zone, wavelengths zone, outposts zone. Đồng thời ta sẽ thực hành tạo custom VPC, subnet, tạo EC2 instance, tạo resources như EC2 instance trong local zone. Khái Niệm VPC (Virtual Private Cloud) VPC là một môi trường mạng ảo cho phép bạn triển khai các tài nguyên của mình trên đám mây AWS một cách bảo mật và có thể kiểm soát hoàn toàn."><meta itemprop="datePublished" content="2024-09-29T16:29:11+07:00" />
+<meta itemprop="dateModified" content="2024-09-29T16:29:11+07:00" />
+<meta itemprop="wordCount" content="895">
+<meta itemprop="keywords" content="" />
+  
+  <meta property="og:title" content="Bài 4: AWS Card Clash Cloud Practitioner 2: Regions and Zones" />
+<meta property="og:description" content="Mục Đích Thông qua bài blog này, ta sẽ tìm hiểu một số khái niệm về networking trong AWS như VPC, subnet, các zones như local zone, wavelengths zone, outposts zone. Đồng thời ta sẽ thực hành tạo custom VPC, subnet, tạo EC2 instance, tạo resources như EC2 instance trong local zone. Khái Niệm VPC (Virtual Private Cloud) VPC là một môi trường mạng ảo cho phép bạn triển khai các tài nguyên của mình trên đám mây AWS một cách bảo mật và có thể kiểm soát hoàn toàn." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://alexeanred.github.io/deconbehe-blog/posts/blog4-cp2/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-09-29T16:29:11+07:00" />
+<meta property="article:modified_time" content="2024-09-29T16:29:11+07:00" />
+
+
+  
+  <meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Bài 4: AWS Card Clash Cloud Practitioner 2: Regions and Zones"/>
+<meta name="twitter:description" content="Mục Đích Thông qua bài blog này, ta sẽ tìm hiểu một số khái niệm về networking trong AWS như VPC, subnet, các zones như local zone, wavelengths zone, outposts zone. Đồng thời ta sẽ thực hành tạo custom VPC, subnet, tạo EC2 instance, tạo resources như EC2 instance trong local zone. Khái Niệm VPC (Virtual Private Cloud) VPC là một môi trường mạng ảo cho phép bạn triển khai các tài nguyên của mình trên đám mây AWS một cách bảo mật và có thể kiểm soát hoàn toàn."/>
+
+  
+  
+  
+  <link rel="canonical" href="https://alexeanred.github.io/deconbehe-blog/posts/blog4-cp2/" />
+  
+  
+</head>
+
+  <body class="text-black duration-200 ease-out dark:text-white">
+    <header class="mx-auto flex h-[4.5rem] max-w-3xl px-8 lg:justify-center">
+  <div class="relative z-50 mr-auto flex items-center">
+    <a
+      class="-translate-x-[1px] -translate-y-[1px] text-2xl font-semibold"
+      href="https://alexeanred.github.io/deconbehe-blog/"
+      >Nguyễn Duy Tiến blogs</a
+    >
+    <div
+      class="btn-dark text-[0] ml-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.png)_left_center/_auto_theme('spacing.6')_no-repeat] [transition:_background-position_0.4s_steps(5)] dark:[background-position:right]"
+      role="button"
+      aria-label="Dark"
+    ></div>
+  </div>
+
+  <div
+    class="btn-menu relative z-50 -mr-8 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden"
+    role="button"
+    aria-label="Menu"
+  ></div>
+
+  
+
+  <script>
+    
+    const htmlClass = document.documentElement.classList;
+    setTimeout(() => {
+      htmlClass.remove('not-ready');
+    }, 10);
+
+    
+    const btnMenu = document.querySelector('.btn-menu');
+    btnMenu.addEventListener('click', () => {
+      htmlClass.toggle('open');
+    });
+
+    
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    const lightBg = '#faf8f1'.replace(/"/g, '');
+    const setDark = (isDark) => {
+      metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
+      htmlClass[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark);
+    };
+
+    
+    const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    if (htmlClass.contains('dark')) {
+      setDark(true);
+    } else {
+      const darkVal = localStorage.getItem('dark');
+      setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+    }
+
+    
+    darkScheme.addEventListener('change', (event) => {
+      setDark(event.matches);
+    });
+
+    
+    const btnDark = document.querySelector('.btn-dark');
+    btnDark.addEventListener('click', () => {
+      setDark(localStorage.getItem('dark') !== 'true');
+    });
+  </script>
+
+  <div
+    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full select-none flex-col justify-center pb-16 duration-200 dark:bg-black lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none"
+  >
+    
+    
+
+    
+  </div>
+</header>
+
+
+    <main
+      class="prose prose-neutral relative mx-auto min-h-[calc(100%-9rem)] max-w-3xl px-8 pb-16 pt-12 dark:prose-invert"
+    >
+      
+
+<article>
+  <header class="mb-16">
+    <h1 class="!my-0 pb-2.5">Bài 4: AWS Card Clash Cloud Practitioner 2: Regions and Zones</h1>
+
+    
+    <div class="text-sm antialiased opacity-60">
+      
+      <time>Sep 29, 2024</time>
+      
+      
+      
+      
+    </div>
+    
+  </header>
+
+  <section><p><img src="/deconbehe-blog/images/arch.png" alt="architecture-picture"></p>
+<h1 id="mục-đích">Mục Đích</h1>
+<ul>
+<li>Thông qua bài blog này, ta sẽ tìm hiểu một số khái niệm về networking trong AWS như VPC, subnet, các zones như local zone, wavelengths zone, outposts zone.</li>
+<li>Đồng thời ta sẽ thực hành tạo custom VPC, subnet, tạo EC2 instance, tạo resources như EC2 instance trong local zone.</li>
+</ul>
+<h1 id="khái-niệm">Khái Niệm</h1>
+<h3 id="vpc-virtual-private-cloud">VPC (Virtual Private Cloud)</h3>
+<ul>
+<li>VPC là một môi trường mạng ảo cho phép bạn triển khai các tài nguyên của mình trên đám mây AWS một cách bảo mật và có thể kiểm soát hoàn toàn. Với VPC, bạn có thể tự do cấu hình không gian địa chỉ IP, subnets, bảng định tuyến, và cài đặt bảo mật nhằm đáp ứng các yêu cầu cụ thể của tổ chức.</li>
+<li>Mỗi VPC có thể chứa nhiều subnets và có thể được kết nối với Internet thông qua Internet Gateway hoặc VPN Gateway nếu cần.</li>
+</ul>
+<h3 id="subnet">Subnet</h3>
+<ul>
+<li>Subnet là một phân đoạn của VPC với không gian địa chỉ IP con của VPC đó, giúp tách biệt tài nguyên của bạn vào các nhóm nhỏ để kiểm soát lưu lượng mạng và bảo mật tốt hơn.</li>
+<li>Có thể thiết lập public subnets (cho phép kết nối Internet) hoặc private subnets (chỉ có thể truy cập từ bên trong mạng VPC hoặc qua VPN).</li>
+</ul>
+<h3 id="local-zone">Local Zone</h3>
+<ul>
+<li>Local Zones là các khu vực tính toán có độ trễ thấp đặt gần các khu vực địa lý nhất định. Điều này giúp giảm độ trễ cho các ứng dụng đòi hỏi thời gian phản hồi nhanh và độ trễ thấp, như các ứng dụng về gaming, AR/VR, và truyền thông trực tiếp.</li>
+<li>Local Zones mở rộng khả năng của AWS đến gần người dùng hơn mà vẫn giữ các tài nguyên nằm trong khu vực kiểm soát của bạn.</li>
+</ul>
+<h3 id="wavelengths-zone">Wavelengths Zone</h3>
+<ul>
+<li>Wavelength Zones là các vùng đặc biệt được xây dựng hợp tác giữa AWS và các nhà cung cấp dịch vụ viễn thông, cho phép chạy các ứng dụng yêu cầu độ trễ thấp trên mạng 5G. Những ứng dụng này sẽ tận dụng được hạ tầng viễn thông ở gần người dùng cuối.</li>
+<li>Các tài nguyên trong Wavelength Zones có thể kết nối trực tiếp với các mạng 5G, giúp tối ưu cho các dịch vụ truyền tải video, AR/VR, và IoT.</li>
+</ul>
+<h3 id="outposts-zone">Outposts Zone</h3>
+<ul>
+<li>AWS Outposts cho phép bạn triển khai cơ sở hạ tầng AWS tại trung tâm dữ liệu của mình với tính nhất quán về API và khả năng tương thích với các dịch vụ AWS. Outposts giúp giữ các ứng dụng yêu cầu độ trễ cực thấp và cần xử lý dữ liệu tại chỗ mà không cần gửi đến các vùng của AWS.</li>
+<li>Outposts Zones là các khu vực mạng riêng biệt giúp đưa dịch vụ của AWS đến những vị trí mà bạn không thể triển khai VPC hoặc không muốn sử dụng dịch vụ hoàn toàn trên đám mây.</li>
+</ul>
+<h1 id="thực-hành">Thực Hành</h1>
+<h2 id="tạo-ec2-instance-trong-custom-vpc">Tạo EC2 instance trong custom VPC</h2>
+<ul>
+<li>Các bước:
+<ol>
+<li>Tạo custom VPC.</li>
+<li>Tạo subnet trong VPC đó.</li>
+<li>Tạo internet gateway cho VPC.</li>
+<li>Attach igw vào route table.</li>
+<li>Associate subnet với route table.</li>
+<li>Tạo ec2 instance.</li>
+</ol>
+</li>
+<li>Đầu tiên, ta tạo custom VPC:
+<ul>
+<li>Chọn VPC only.</li>
+<li>Điền tên VPC như: <strong>myVPC</strong>.</li>
+<li>Điền IPv4 CIDR như: <strong>10.0.0.0/16</strong>.</li>
+<li>Chọn nút: <strong>Create VPC</strong>.
+<img src="/deconbehe-blog/images/vpc1.png" alt="alt"></li>
+</ul>
+</li>
+<li>Sau khi tạo VPC xong, ta tạo subnet:
+<ul>
+<li>Chọn VPC vừa tạo.</li>
+<li>Điền tên subnet như: <strong>myVPC-subnet01</strong></li>
+<li>Chọn AZ cho subnet.</li>
+<li>Điền IPv4 subnet CIDR block như: <strong>10.0.0.0/24</strong></li>
+<li>Chọn nút: <strong>Create subnet</strong>
+<img src="/deconbehe-blog/images/subnet1.png" alt="alt"></li>
+</ul>
+</li>
+<li>Vì ta muốn các resources bên trong VPC có thể kết nối Internet nên ta tạo một internet gateway:
+<ul>
+<li>Chọn mục <strong>Internet gateways</strong> trong VPC.</li>
+<li>Điền tên igw như: <strong>myVPC-igw</strong>.</li>
+<li>Chọn <strong>Create internet gateway</strong>.
+<img src="/deconbehe-blog/images/igw.png" alt="alt"></li>
+</ul>
+</li>
+<li>Sau khi tạo xong igw, ta attach to VPC:
+<ul>
+<li>Chọn VPC.</li>
+<li>Chọn nút: <strong>Attach internet gateway</strong>.
+<img src="/deconbehe-blog/images/igw2.png" alt="alt"></li>
+</ul>
+</li>
+<li>Sau đó, ta thêm 1 route vào route table của VPCL
+<ul>
+<li>Trong rtb có 2 vị trí để điền là target và destination:
+<ul>
+<li>Destination điền: <strong>0.0.0.0/0</strong></li>
+<li>Target chọn igw đã tạo.
+<!-- raw HTML omitted -->
+<img src="/deconbehe-blog/images/rtb1.png?width=800px" alt="Resize"></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>Cuối cùng, ta liên kết subnet với route table:
+<img src="/deconbehe-blog/images/rtb4.png" alt="alt"></li>
+<li>Tiếp theo ta tạo 1 security group để allow internet truy cập vào instance:
+<ul>
+<li>Chọn <strong>Type</strong> là HTTP và source: <strong>0.0.0.0/0</strong>.</li>
+<li>Nếu application chạy ở port khác như 8080 thì ta chọn Type là Custom TCP và source <strong>0.0.0.0/0</strong>.
+<img src="/deconbehe-blog/images/sg10.png" alt="alt"></li>
+</ul>
+</li>
+<li>Tạo EC2 instance như cấu hình dưới đây:
+<img src="/deconbehe-blog/images/ec21.png" alt="alt"></li>
+<li>Nếu đã lỡ tạo ec2 instance trước thì vào Actions chọn Security chọn change security group:
+<img src="/deconbehe-blog/images/sg2.png" alt="alt"></li>
+<li>Nếu ec2 instance không có Public IPv4 DNS, ta vào <strong>Edit VPC settings</strong> để check vào box <strong>Enable DNS hostnames</strong>.
+<img src="/deconbehe-blog/images/hostname1.png" alt="alt"></li>
+</ul>
+<h2 id="tạo-ec2-instance-trong-local-zone">Tạo EC2 instance trong local zone</h2>
+<ul>
+<li>Đầu tiên ta search trên thanh tìm kiếm local zone, chọn AWS local zones:
+<ul>
+<li>Sau đó ta chọn Actions -&gt; Manage Zone group và enable 1 local zone.
+<img src="/deconbehe-blog/images/localzone0.png" alt="alt"></li>
+</ul>
+</li>
+<li>Tiếp theo, ta tạo subnet trong local zone đó:
+<ul>
+<li>Lưu ý: IPv4 CIDR block phải khác với subnet đã tạo trên của AZ
+<img src="/deconbehe-blog/images/localzone1.png" alt="alt"></li>
+</ul>
+</li>
+<li>Tạo ec2 instance như hình dưới:
+<ul>
+<li>Lưu ý: Chọn subnet của local Zone đã tạo.
+<img src="/deconbehe-blog/images/localzone2.png" alt="alt"></li>
+</ul>
+</li>
+<li>Lưu ý: Ở local zone không có tất cả các instance types như ở region. Như dưới đây là phải chọn c6i.large do nó không có t2.micro.
+<img src="/deconbehe-blog/images/localzone3.png" alt="alt"></li>
+<li>Ta vào thử 2 web chạy ở 2 zones khác nhau:
+<img src="/deconbehe-blog/images/localzone4.png" alt="alt"></li>
+<li>Lưu ý: Nếu IAM user chỉ có quyền tạo resources trên những region nhất định như us-east-1 và muốn tạo resources ở local zone từ region đó thì phải request quyền để dùng được.</li>
+</ul>
+</section>
+
+  
+  
+
+  
+  
+  
+  
+  <nav class="mt-24 flex rounded-lg bg-black/[3%] text-lg dark:bg-white/[8%]">
+    
+    
+    <a
+      class="ml-auto flex w-1/2 items-center justify-end rounded-r-md p-6 pl-3 font-semibold no-underline hover:bg-black/[2%] dark:hover:bg-white/[3%]"
+      href="https://alexeanred.github.io/deconbehe-blog/posts/blog3-cloudbenefit/"
+      ><span>Bài 3: Cloud computing: CapEx Vs OpEx</span><span class="ml-1.5">→</span></a
+    >
+    
+  </nav>
+  
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+</article>
+
+
+    </main>
+
+    <footer
+  class="opaco mx-auto flex h-[4.5rem] max-w-3xl items-center px-8 text-[0.9em] opacity-60"
+>
+  <div class="mr-auto">
+    &copy; 2024
+    <a class="link" href="https://alexeanred.github.io/deconbehe-blog/">Nguyễn Duy Tiến blogs</a>
+  </div>
+  <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank"
+    >Powered by Hugo️️</a
+  >️
+  <a
+    class="link"
+    href="https://github.com/nanxiaobei/hugo-paper"
+    rel="noopener"
+    target="_blank"
+    >✎ Paper</a
+  >
+</footer>
+
+  </body>
+</html>

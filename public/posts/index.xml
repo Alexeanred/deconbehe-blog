@@ -2,18 +2,39 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Nguyễn Duy Tiến blogs</title>
-    <link>http://localhost:1313/deconbehe-blog/posts/</link>
+    <link>https://alexeanred.github.io/deconbehe-blog/posts/</link>
     <description>Recent content in Posts on Nguyễn Duy Tiến blogs</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 31 May 2024 16:48:18 +0700</lastBuildDate>
-    <atom:link href="http://localhost:1313/deconbehe-blog/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 29 Sep 2024 16:29:11 +0700</lastBuildDate>
+    <atom:link href="https://alexeanred.github.io/deconbehe-blog/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>My first blog</title>
-      <link>http://localhost:1313/deconbehe-blog/posts/hello/</link>
+      <title>Bài 4: AWS Card Clash Cloud Practitioner 2: Regions and Zones</title>
+      <link>https://alexeanred.github.io/deconbehe-blog/posts/blog4-cp2/</link>
+      <pubDate>Sun, 29 Sep 2024 16:29:11 +0700</pubDate>
+      <guid>https://alexeanred.github.io/deconbehe-blog/posts/blog4-cp2/</guid>
+      <description>Mục Đích Thông qua bài blog này, ta sẽ tìm hiểu một số khái niệm về networking trong AWS như VPC, subnet, các zones như local zone, wavelengths zone, outposts zone. Đồng thời ta sẽ thực hành tạo custom VPC, subnet, tạo EC2 instance, tạo resources như EC2 instance trong local zone. Khái Niệm VPC (Virtual Private Cloud) VPC là một môi trường mạng ảo cho phép bạn triển khai các tài nguyên của mình trên đám mây AWS một cách bảo mật và có thể kiểm soát hoàn toàn.</description>
+    </item>
+    <item>
+      <title>Bài 3: Cloud computing: CapEx Vs OpEx</title>
+      <link>https://alexeanred.github.io/deconbehe-blog/posts/blog3-cloudbenefit/</link>
+      <pubDate>Sun, 22 Sep 2024 21:00:00 +0700</pubDate>
+      <guid>https://alexeanred.github.io/deconbehe-blog/posts/blog3-cloudbenefit/</guid>
+      <description>CapEx Vs OpEx CapEx Capital expense (CapEx) là các khoản chi phí đầu tư vào tài sản cố định, như mua sắm phần cứng, phần mềm, hoặc cơ sở hạ tầng để sử dụng lâu dài. OpEx Operational expense (OpEx) là các khoản chi phí hàng ngày hoặc định kỳ để duy trì hoạt động của một hệ thống hoặc tổ chức. Đây là các chi phí vận hành liên quan đến việc sử dụng tài nguyên, trả phí dịch vụ, bảo trì, và quản lý hạ tầng hoặc phần mềm.</description>
+    </item>
+    <item>
+      <title>Bài 2: Cloud computing: Basic definitions</title>
+      <link>https://alexeanred.github.io/deconbehe-blog/posts/blog2-clouddef/</link>
+      <pubDate>Sun, 22 Sep 2024 17:23:41 +0700</pubDate>
+      <guid>https://alexeanred.github.io/deconbehe-blog/posts/blog2-clouddef/</guid>
+      <description>Một số khái niệm cơ bản HA (High Availability) HA thường được đo bởi phần trăm thời gian hoạt động. Tính sẵn sàng cao nói đến khả năng tránh sự cố, loại bỏ các SPOF (Single-point-of-failure). Single Point of Failure là một thành phần duy nhất của một hệ thống mà khi bị lỗi sẽ làm toàn bộ hệ thống ngừng hoạt động. Ví dụ: 1 server duy nhất, 1 storage duy nhất, 1 nguồn điện, 1 đường truyền mạng.</description>
+    </item>
+    <item>
+      <title>Bài 1: Cloud Computing: 3 Types of Cloud</title>
+      <link>https://alexeanred.github.io/deconbehe-blog/posts/blog1-cloudmodel/</link>
       <pubDate>Fri, 31 May 2024 16:48:18 +0700</pubDate>
-      <guid>http://localhost:1313/deconbehe-blog/posts/hello/</guid>
-      <description>Xin chào Cảm ơn các bạn đã đọc blog này.</description>
+      <guid>https://alexeanred.github.io/deconbehe-blog/posts/blog1-cloudmodel/</guid>
+      <description>Một số khái niệm cơ bản Cloud model 1. Public Cloud Là do 1 Cloud Service Provider cung cấp, dùng server của người khác chạy workloads của mình. Đảm bảo đủ dùng về mặt compute, memory, network, storage. Fast deployments, avoid overprovisioning. Ví dụ: AWS, GCP, Azure. 2. Private Cloud Là 1 company tự set up data center, insfrastructure của họ để tự quản lý services và resources của họ. Secure, controlled.</description>
     </item>
   </channel>
 </rss>

@@ -2,3 +2,12 @@ baseURL = 'https://alexeanred.github.io/deconbehe-blog/'
 languageCode = 'en-us'
 title = 'Nguyễn Duy Tiến blogs'
 theme = 'paper'
+
+[[module.mounts]]
+source = 'static'
+target = 'static'
+
+[[module.mounts]]
+source = 'images'
+target = 'static/images'
+
